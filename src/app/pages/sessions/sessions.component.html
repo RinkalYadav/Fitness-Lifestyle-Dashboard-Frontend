@@ -1,0 +1,62 @@
+<div class="wrapper">
+
+  <h2>Sessions</h2>
+
+  <div class="card">
+    <h3>{{ editId ? 'Edit Session' : 'Add Session' }}</h3>
+
+    <form [formGroup]="sessionForm" (ngSubmit)="submitSession()" class="grid">
+
+      <div class="field">
+        <label>Session Type</label>
+        <input type="text" placeholder="e.g., Yoga" formControlName="sessionType">
+      </div>
+
+      <div class="field">
+        <label>Duration (min)</label>
+        <input type="number" placeholder="30" formControlName="duration">
+      </div>
+
+      <div class="field span-2">
+        <label>Notes</label>
+        <input type="text" placeholder="Morning yoga session" formControlName="notes">
+      </div>
+
+      <div class="field">
+        <label>Date</label>
+        <input type="date" formControlName="date">
+      </div>
+
+      <div class="span-2">
+        <button type="submit">{{ editId ? 'Update Session' : 'Add Session' }}</button>
+        <button type="button" class="cancel" *ngIf="editId" (click)="cancelEdit()">Cancel</button>
+      </div>
+
+    </form>
+
+    <p class="msg">{{ message }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Your Sessions</h3>
+
+    <div *ngIf="loading">Loading...</div>
+
+    <div *ngIf="!loading && sessions.length === 0">No sessions yet.</div>
+
+    <div class="session-item" *ngFor="let s of sessions">
+      <div>
+        <h4>{{ s.sessionType }}</h4>
+        <p>{{ s.duration }} mins</p>
+        <p>{{ s.notes }}</p>
+        <p>Date: {{ s.date }}</p>
+      </div>
+
+      <div class="btns">
+        <button class="edit" (click)="editSession(s)">Edit</button>
+        <button class="del" (click)="deleteSession(s.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</div>

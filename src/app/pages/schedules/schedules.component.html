@@ -1,0 +1,63 @@
+<div class="wrapper">
+
+  <h2>Schedules</h2>
+
+  <!-- FORM -->
+  <div class="card">
+    <h3>{{ editId ? 'Edit Schedule' : 'Add Schedule' }}</h3>
+
+    <form [formGroup]="scheduleForm" (ngSubmit)="submitSchedule()" class="grid">
+
+      <div class="field">
+        <label>Title</label>
+        <input type="text" placeholder="Morning Workout" formControlName="title">
+      </div>
+
+      <div class="field">
+        <label>Description</label>
+        <input type="text" placeholder="Cardio session" formControlName="description">
+      </div>
+
+      <div class="field">
+        <label>Start Time</label>
+        <input type="time" formControlName="startTime">
+      </div>
+
+      <div class="field">
+        <label>End Time</label>
+        <input type="time" formControlName="endTime">
+      </div>
+
+      <div class="span-2">
+        <button type="submit">{{ editId ? 'Update Schedule' : 'Add Schedule' }}</button>
+        <button type="button" *ngIf="editId" (click)="cancelEdit()" class="cancel">Cancel</button>
+      </div>
+
+    </form>
+
+    <p class="msg">{{ message }}</p>
+  </div>
+
+  <!-- LIST -->
+  <div class="card">
+    <h3>Your Schedules</h3>
+
+    <div *ngIf="loading">Loading...</div>
+
+    <div *ngIf="!loading && schedules.length === 0">No schedules yet.</div>
+
+    <div class="schedule-item" *ngFor="let sc of schedules">
+      <div>
+        <h4>{{ sc.title }}</h4>
+        <p>{{ sc.description }}</p>
+        <p>{{ sc.startTime }} - {{ sc.endTime }}</p>
+      </div>
+
+      <div class="btns">
+        <button class="edit" (click)="editSchedule(sc)">Edit</button>
+        <button class="del" (click)="deleteSchedule(sc.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</div>

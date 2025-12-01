@@ -1,0 +1,62 @@
+<div class="meals-wrapper">
+
+  <h2>Meals</h2>
+
+  <div class="card">
+    <h3>{{ editId ? 'Edit Meal' : 'Add Meal' }}</h3>
+
+    <form [formGroup]="mealForm" (ngSubmit)="submitMeal()" class="grid">
+
+      <div class="field">
+        <label>Meal Type</label>
+        <input type="text" placeholder="e.g., Breakfast" formControlName="mealType">
+      </div>
+
+      <div class="field">
+        <label>Items</label>
+        <input type="text" placeholder="Oats, Banana" formControlName="items">
+      </div>
+
+      <div class="field">
+        <label>Calories</label>
+        <input type="number" placeholder="350" formControlName="calories">
+      </div>
+
+      <div class="field">
+        <label>Date</label>
+        <input type="date" formControlName="date">
+      </div>
+
+      <div class="span-2">
+        <button type="submit">{{ editId ? 'Update Meal' : 'Add Meal' }}</button>
+        <button type="button" *ngIf="editId" (click)="cancelEdit()" class="cancel">Cancel</button>
+      </div>
+
+    </form>
+
+    <p class="msg">{{ message }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Your Meals</h3>
+
+    <div *ngIf="loading">Loading...</div>
+
+    <div *ngIf="!loading && meals.length === 0">No meals added yet.</div>
+
+    <div class="meal-item" *ngFor="let m of meals">
+      <div>
+        <h4>{{ m.mealType }}</h4>
+        <p>{{ m.foodItems }}</p>
+        <p>{{ m.calories }} cal</p>
+        <p>Date: {{ m.date }}</p>
+      </div>
+
+      <div class="btns">
+        <button class="edit" (click)="editMeal(m)">Edit</button>
+        <button class="del" (click)="deleteMeal(m.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</div>

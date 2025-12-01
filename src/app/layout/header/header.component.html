@@ -1,0 +1,28 @@
+<header>
+  <div class="logo">Fitness Portal</div>
+
+  <nav>
+
+    <!-- When NOT logged in -->
+    <ng-container *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/">Home</a>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </ng-container>
+
+    <!-- When logged in -->
+    <ng-container *ngIf="auth.isLoggedIn()">
+      <span class="welcome">Hi, {{ auth.getUserName() }}</span>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/profile">Profile</a>
+      <a routerLink="/goals">Goals</a>
+      <a routerLink="/workouts">Workouts</a>
+      <a routerLink="/meals">Meals</a>
+      <a routerLink="/sessions">Sessions</a>
+      <a routerLink="/schedules">Schedules</a>
+      <a routerLink="/analytics">Analytics</a>
+      <a (click)="logout()">Logout</a>
+    </ng-container>
+
+  </nav>
+</header>

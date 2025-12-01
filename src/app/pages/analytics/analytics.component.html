@@ -1,0 +1,46 @@
+<div class="analytics-wrapper">
+  <h2>Analytics Dashboard</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <p class="msg" *ngIf="message">{{ message }}</p>
+
+  <ng-container *ngIf="!loading && summary as s">
+    <!-- Summary cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Workouts</div>
+        <div class="card-value">{{ s.workoutsCount }}</div>
+        <div class="card-sub">Minutes: {{ s.workoutMinutes }}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sessions</div>
+        <div class="card-value">{{ s.sessionsCount }}</div>
+        <div class="card-sub">Minutes: {{ s.sessionMinutes }}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Meals</div>
+        <div class="card-value">{{ s.mealsCount }}</div>
+        <div class="card-sub">Calories: {{ s.mealsCalories }}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Workout Calories</div>
+        <div class="card-value">{{ s.workoutCalories }}</div>
+        <div class="card-sub">{{ s.rangeStart }} → {{ s.rangeEnd }}</div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts">
+      <div class="chart-card">
+        <canvas #countsBar></canvas>
+      </div>
+
+      <div class="chart-card">
+        <canvas #caloriesPie></canvas>
+      </div>
+    </div>
+  </ng-container>
+</div>

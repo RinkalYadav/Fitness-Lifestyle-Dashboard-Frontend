@@ -1,0 +1,64 @@
+<div class="workouts-wrapper">
+
+  <h2>Workouts</h2>
+
+  <!-- FORM -->
+  <div class="card">
+    <h3>{{ editingWorkoutId ? 'Edit Workout' : 'Add Workout' }}</h3>
+
+    <form [formGroup]="workoutForm" (ngSubmit)="submitWorkout()" class="grid">
+
+      <div class="form-field">
+        <label>Type</label>
+        <input type="text" placeholder="e.g., Cardio" formControlName="type">
+      </div>
+
+      <div class="form-field">
+        <label>Duration (min)</label>
+        <input type="number" placeholder="e.g., 45" formControlName="duration">
+      </div>
+
+      <div class="form-field">
+        <label>Calories</label>
+        <input type="number" placeholder="e.g., 350" formControlName="calories">
+      </div>
+
+      <div class="form-field">
+        <label>Date</label>
+        <input type="date" formControlName="date">
+      </div>
+
+      <div class="span-2">
+        <button type="submit">{{ editingWorkoutId ? 'Update Workout' : 'Add Workout' }}</button>
+        <button type="button" class="cancel" *ngIf="editingWorkoutId" (click)="cancelEdit()">Cancel</button>
+      </div>
+
+    </form>
+
+    <p class="msg">{{ message }}</p>
+  </div>
+
+  <!-- LIST -->
+  <div class="card">
+    <h3>Your Workouts</h3>
+
+    <div *ngIf="loading">Loading...</div>
+
+    <div *ngIf="!loading && workouts.length === 0">No workouts yet</div>
+
+    <div class="workout-item" *ngFor="let w of workouts">
+      <div>
+        <h4>{{ w.type }}</h4>
+        <p>{{ w.duration }} mins | {{ w.calories }} cal</p>
+        <p>Date: {{ w.date }}</p>
+      </div>
+
+      <div class="btns">
+        <button class="edit" (click)="editWorkout(w)">Edit</button>
+        <button class="del" (click)="deleteWorkout(w.id)">Delete</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <label>Name</label>
+    <input placeholder="Enter name" formControlName="name">
+
+    <label>Email</label>
+    <input placeholder="Enter email" type="email" formControlName="email">
+
+    <label>Password</label>
+    <input placeholder="Enter password" type="password" formControlName="password">
+
+    <button type="submit" [disabled]="loading">Login</button>
+  </form>
+
+  <p class="small-link">
+    <a routerLink="/forgot-password">Forgot Password?</a>
+  </p>
+
+  <p class="msg">{{ message }}</p>
+</div>

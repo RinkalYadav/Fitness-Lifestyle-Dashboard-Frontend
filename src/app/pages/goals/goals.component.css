@@ -1,0 +1,52 @@
+.goals-wrapper {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+h2 { margin-bottom: 12px; }
+h3 { margin: 0 0 16px; }
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+
+.form-field { display: flex; flex-direction: column; }
+.span-2 { grid-column: span 2; }
+
+label { font-weight: 600; margin-bottom: 6px; color: #444; }
+input {
+  border: 1px solid #ccc; border-radius: 8px; padding: 10px; outline: none;
+}
+input:focus { border-color: #4CAF50; }
+
+button {
+  width: 100%; padding: 12px; border: none; border-radius: 8px;
+  background: #4CAF50; color: #fff; font-weight: 600; cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.msg { margin-top: 10px; color: #333; }
+.err { margin-top: 4px; color: #c62828; font-size: 12px; }
+
+.goals-list { display: flex; flex-direction: column; gap: 12px; }
+.goal-item {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 12px; border: 1px solid #eee; border-radius: 10px; background: #fafafa;
+}
+.goal-left .title { font-weight: 700; }
+.goal-left .desc { color: #555; margin: 4px 0 8px; }
+.goal-left .meta { display: flex; gap: 16px; color: #444; }
+
+.goal-right { text-align: right; }
+.empty { color: #777; }

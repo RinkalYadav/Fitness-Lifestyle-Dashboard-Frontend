@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Create Account</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <label>Name</label>
+    <input placeholder="Enter your name" formControlName="name">
+
+    <label>Email</label>
+    <input placeholder="Enter your email" formControlName="email" type="email">
+
+    <label>Password</label>
+    <input placeholder="Enter password" formControlName="password" type="password">
+
+    <label>Specialization</label>
+    <input placeholder="e.g., Yoga, Cardio, Trainer" formControlName="specializations">
+
+    <label>Age</label>
+    <input placeholder="Enter age" formControlName="age" type="number">
+
+    <label>Height (cm)</label>
+    <input placeholder="Enter height" formControlName="height" type="number">
+
+    <label>Weight (kg)</label>
+    <input placeholder="Enter weight" formControlName="weight" type="number">
+
+    <button type="submit" [disabled]="loading">Register</button>
+  </form>
+
+  <p class="msg">{{ message }}</p>
+</div>

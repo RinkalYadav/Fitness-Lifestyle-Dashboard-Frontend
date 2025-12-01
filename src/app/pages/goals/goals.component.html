@@ -1,0 +1,71 @@
+<div class="goals-wrapper">
+  <h2>Goals</h2>
+
+  <!-- Create Goal Form -->
+  <div class="card">
+    <h3>Create New Goal</h3>
+
+    <form [formGroup]="goalForm" (ngSubmit)="submitGoal()" class="grid">
+      <div class="form-field">
+        <label>Title</label>
+        <input type="text" placeholder="e.g., Muscle Gain" formControlName="title">
+        <div class="err" *ngIf="hasError('title','required')">Title is required</div>
+      </div>
+
+      <div class="form-field span-2">
+        <label>Description</label>
+        <input type="text" placeholder="e.g., Gain 5kg in 3 months" formControlName="description">
+        <div class="err" *ngIf="hasError('description','required')">Description is required</div>
+      </div>
+
+      <div class="form-field">
+        <label>Target Date</label>
+        <input type="date" formControlName="targetDate">
+        <div class="err" *ngIf="hasError('targetDate','required')">Target date is required</div>
+      </div>
+
+      <div class="form-field">
+        <label>Current Weight (kg)</label>
+        <input type="number" formControlName="currentWeight" placeholder="e.g., 60">
+        <div class="err" *ngIf="hasError('currentWeight','required')">Current weight is required</div>
+      </div>
+
+      <div class="form-field">
+        <label>Target Weight (kg)</label>
+        <input type="number" formControlName="targetWeight" placeholder="e.g., 65">
+        <div class="err" *ngIf="hasError('targetWeight','required')">Target weight is required</div>
+      </div>
+
+      <div class="span-2">
+        <button type="submit" [disabled]="loading">Create Goal</button>
+      </div>
+    </form>
+
+    <p class="msg" *ngIf="message">{{ message }}</p>
+  </div>
+
+  <!-- Goals List -->
+  <div class="card">
+    <h3>Your Goals</h3>
+
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="!loading && goals.length === 0" class="empty">No goals yet. Add your first goal!</div>
+
+    <div class="goals-list" *ngIf="!loading && goals.length > 0">
+      <div class="goal-item" *ngFor="let g of goals">
+        <div class="goal-left">
+          <div class="title">{{ g.title }}</div>
+          <div class="desc">{{ g.description }}</div>
+          <div class="meta">
+            <span><strong>Status:</strong> {{ g.status }}</span>
+            <span><strong>Target Date:</strong> {{ g.targetDate }}</span>
+          </div>
+        </div>
+        <div class="goal-right">
+          <div><strong>Current:</strong> {{ g.currentWeight }} kg</div>
+          <div><strong>Target:</strong> {{ g.targetWeight }} kg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
