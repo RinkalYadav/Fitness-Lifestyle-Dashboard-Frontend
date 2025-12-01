@@ -24,7 +24,7 @@ export interface MealResponse {
 })
 export class MealsService {
 
-  private BASE_URL = 'http://localhost:8080/api/meals';
+  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/meals';
 
   constructor(private http: HttpClient) {}
 

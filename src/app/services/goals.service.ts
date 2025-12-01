@@ -25,7 +25,7 @@ export interface GoalResponse {
   providedIn: 'root'
 })
 export class GoalsService {
-  private USERS_BASE = 'http://localhost:8080/api/users';
+  private USERS_BASE = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/users';
 
   constructor(private http: HttpClient) {}
 

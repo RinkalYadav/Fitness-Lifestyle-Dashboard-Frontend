@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private BASE_URL = 'http://localhost:8080/api/users';
+  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/users';
 
   constructor(private http: HttpClient) {}
 
