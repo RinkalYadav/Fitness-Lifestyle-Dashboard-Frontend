@@ -24,7 +24,7 @@ export interface ScheduleResponse {
 })
 export class SchedulesService {
 
-  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/schedules';
+  private BASE_URL = 'https://fitness-lifestyle-dashboard-backend.onrender.com/api/schedules';
 
   constructor(private http: HttpClient) {}
 

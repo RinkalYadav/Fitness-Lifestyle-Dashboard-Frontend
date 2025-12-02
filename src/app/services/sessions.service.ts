@@ -24,7 +24,7 @@ export interface SessionResponse {
 })
 export class SessionsService {
 
-  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/sessions';
+  private BASE_URL = 'https://fitness-lifestyle-dashboard-backend.onrender.com/api/sessions';
 
   constructor(private http: HttpClient) {}
 

@@ -24,7 +24,7 @@ export interface WorkoutResponse {
 })
 export class WorkoutsService {
 
-  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/workouts';
+  private BASE_URL = 'https://fitness-lifestyle-dashboard-backend.onrender.com/api/workouts';
 
   constructor(private http: HttpClient) {}
 

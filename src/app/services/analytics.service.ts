@@ -16,7 +16,7 @@ export interface AnalyticsSummary {
 
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
-  private BASE_URL = 'http://fitness-lifestyle-dashboard-backend.onrender.com/api/analytics/summary';
+  private BASE_URL = 'https://fitness-lifestyle-dashboard-backend.onrender.com/api/analytics/summary';
 
   constructor(private http: HttpClient) {}
 
